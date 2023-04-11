@@ -1,0 +1,111 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/vchat-block",
+  "version": "0.1.0",
+  "title": "vChat-block",
+  "category": "widgets",
+  "icon": "share-alt",
+  "description": "Allow your users to send you direct Viber messages by clicking floating chat button and buttons with vChat block.",
+  "textdomain": "ta-vchat",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "keywords": [
+    "viber",
+    "vChat",
+    "chat",
+    "viberChat"
+  ],
+  "supports": {
+    "html": false,
+    "color": {
+      "background": true,
+      "text": true,
+      "gradients": true,
+      "hover": true
+    },
+    "spacing": {},
+    "typography": {}
+  },
+  "example": {
+    "attributes": {
+      "text": "This is some text!",
+      "gradient": "red-to-blue",
+      "links": true
+    }
+  },
+  "attributes": {
+    "text": {
+      "type": "string",
+      "default": "How can I help you?"
+    },
+    "info": {
+      "type": "string",
+      "default": "Robert / Sales Support"
+    },
+    "title": {
+      "type": "string",
+      "default": "How can I help you?"
+    },
+    "online": {
+      "type": "string",
+      "default": "I am online"
+    },
+    "offline": {
+      "type": "string",
+      "default": "I am offline"
+    },
+    "buttonType": {
+      "type": "string",
+      "default": "basic-button"
+    },
+    "buttonSize": {
+      "type": "string",
+      "default": "size-medium"
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "border-rounded"
+    },
+    "visibility": {
+      "type": "string",
+      "default": ""
+    },
+    "border": {
+      "type": "string",
+      "default": "border-none"
+    },
+    "textAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "iconTarget": {
+      "type": "boolean",
+      "default": false
+    },
+    "buttonLinkTarget": {
+      "type": "boolean",
+      "default": false
+    },
+    "buttonTextColor": {
+      "type": "string"
+    },
+    "buttonBackgroundColor": {
+      "type": "string",
+      "default": "red"
+    },
+    "numberInput": {
+      "type": "string",
+      "default": ""
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "timeZone": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
