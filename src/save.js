@@ -1,7 +1,6 @@
-
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
-export default function save( { attributes } ) {
+export default function save({ attributes }) {
 	const {
 		buttonSize,
 		borderRadius,
@@ -20,71 +19,89 @@ export default function save( { attributes } ) {
 		buttonBackgroundColor,
 		iconTarget,
 		imageUrl,
-		timeZone
+		timeZone,
+		mondayStartTime,
+		mondayEndTime,
+		tuesdayStartTime,
+		tuesdayEndTime,
+		wednesdayStartTime,
+		wednesdayEndTime,
+		thursdayStartTime,
+		thursdayEndTime,
+		fridayStartTime,
+		fridayEndTime,
+		saturdayStartTime,
+		saturdayEndTime,
+		sundayStartTime,
+		sundayEndTime,
 	} = attributes;
-	const textClasses = classnames(
-		`text-box-align-${ textAlignment }`
-	);
-	const classes = classnames( `vcButtons vChat-button-4 vc-btn-bg` );
+	const viberLink = `https://viber://chat?number=${numberInput}`;
+	const textClasses = classnames(`text-box-align-${textAlignment}`);
+	const classes = classnames(`vcButtons vChat-button-4 vc-btn-bg`);
 	return (
 		<>
-			{buttonType === "basic-button" ? 
+			{buttonType === 'basic-button' ? (
 				<div className={`button-wrapper ${textClasses}`}>
-					<a 
-						{ ...useBlockProps.save( {
-							className: `${ classes } ${ buttonSize } ${ borderRadius } ${visibility} ${border}`,
-						} ) } href={`viber://chat?number=${numberInput}`} rel="noopener noreferrer" target={ buttonLinkTarget ? '_blank' : '_self' } > 
-						{iconTarget && <span className="dashicons dashicons-share-alt"></span>}
-						<RichText.Content
-							tagName="span"
-							value={ text }
-						/>
+					<a
+						{...useBlockProps.save({
+							className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`,
+						})}
+						href={`https://wa.me/${numberInput}`}
+						rel="noopener noreferrer"
+						target={buttonLinkTarget ? '_blank' : '_self'}
+					>
+						{iconTarget && (
+							<span className="dashicons dashicons-share-alt"></span>
+						)}
+						<RichText.Content tagName="span" value={text} />
 					</a>
 				</div>
-			: 
+			) : (
 				<div className={`button-wrapper ${textClasses}`}>
-					<a 
-						{ ...useBlockProps.save( {
-							className: `avatar-active ${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
-						})} data-timezone={timeZone} href={`viber://chat?number=${numberInput}`} rel="noopener noreferrer" target={ buttonLinkTarget ? '_blank' : '_self' }>
-						 <img src={imageUrl} alt="agent" />
+					<a
+						{...useBlockProps.save({
+							className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`,
+						})}
+						href={`https://wa.me/${numberInput}`}
+						rel="noopener noreferrer"
+						target={buttonLinkTarget ? '_blank' : '_self'}
+						data-timezone={timeZone}
+						data-btnavailablety={`{ "monday":"${mondayStartTime}-${mondayEndTime}", "tuesday":"${tuesdayStartTime}-${tuesdayEndTime}", "wednesday":"${wednesdayStartTime}-${wednesdayEndTime}", "thursday":"${thursdayStartTime}-${thursdayEndTime}", "friday":"${fridayStartTime}-${fridayEndTime}", "saturday":"${saturdayStartTime}-${saturdayEndTime}", "sunday":"${sundayStartTime}-${sundayEndTime}" }`}
+					>
+						<img src={imageUrl} alt="agent" />
 						<div className="info-wrapper">
 							<RichText.Content
-								value={ info }
+								value={info}
 								tagName="p"
 								className="info"
 							/>
 							<RichText.Content
-								value={ title }
+								value={title}
 								tagName="p"
 								className="title"
 							/>
 							<RichText.Content
-							style= {
-								{
-									backgroundColor:buttonBackgroundColor,
-									color:buttonTextColor
-								}
-							}
-								value={ online }
+								style={{
+									backgroundColor: buttonBackgroundColor,
+									color: buttonTextColor,
+								}}
+								value={online}
 								tagName="p"
 								className="online"
 							/>
 							<RichText.Content
-							style= {
-								{
-									backgroundColor:buttonBackgroundColor,
-									color:buttonTextColor
-								}
-							}
-								value={ offline }
+								style={{
+									backgroundColor: buttonBackgroundColor,
+									color: buttonTextColor,
+								}}
+								value={offline}
 								tagName="p"
 								className="offline"
 							/>
 						</div>
 					</a>
 				</div>
-			}
+			)}
 		</>
 	);
 }

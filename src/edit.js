@@ -2392,8 +2392,6 @@ const timezones = [
 	},
 ];
 
-
-
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
 
@@ -2416,29 +2414,42 @@ export default function Edit(props) {
 		numberInput,
 		imageUrl,
 		timeZone,
+		mondayStartTime,
+		mondayEndTime,
+		tuesdayStartTime,
+		tuesdayEndTime,
+		wednesdayStartTime,
+		wednesdayEndTime,
+		thursdayStartTime,
+		thursdayEndTime,
+		fridayStartTime,
+		fridayEndTime,
+		saturdayStartTime,
+		saturdayEndTime,
+		sundayStartTime,
+		sundayEndTime,
 	} = attributes;
 
-	console.log(timeZone)
-
+	// Timezone select and filter //
 	const [filteredOptions, setFilteredOptions] = useState(timezones);
-
 	function onInputChange(value) {
 		setFilteredOptions(
 			timezones.filter((timezone) =>
-			timezone.label.toLowerCase().includes(value.toLowerCase())
+				timezone.label.toLowerCase().includes(value.toLowerCase())
 			)
 		);
 	}
-
 	function onFontSizeChange(value) {
 		setAttributes({ timeZone: value });
 	}
 
+	// Image upload  //
 	const onSelectImage = (image) => {
 		setAttributes({
 			imageUrl: image.url,
 		});
 	};
+
 	const onChangeAlignment = (newAlignment) => {
 		setAttributes({ textAlignment: newAlignment });
 	};
@@ -2506,7 +2517,6 @@ export default function Edit(props) {
 		{ value: 'border-groove', label: __('Groove', 'ta-vchat') },
 		{ value: 'border-ridge', label: __('Ridge', 'ta-vchat') },
 	];
-
 
 	return (
 		<>
@@ -2737,13 +2747,180 @@ export default function Edit(props) {
 							title={__('Available Time', 'ta-vchat')}
 							initialOpen={false}
 						>
-						<ComboboxControl
+							<ComboboxControl
 								label={__('Time Zone', 'ta-vchat')}
 								value={timeZone}
 								options={filteredOptions}
 								onChange={onFontSizeChange}
 								onInputChange={onInputChange}
 							/>
+							<PanelBody
+								title={__('Monday', 'ta-vchat')}
+								initialOpen={false}
+							>
+								<TextControl
+									label={__('Start Time:', 'ta-vchat')}
+									value={mondayStartTime}
+									onChange={(value) =>
+										setAttributes({
+											mondayStartTime: value,
+										})
+									}
+									placeholder={__('00:01', 'ta-vchat')}
+								/>
+								<TextControl
+									label={__('End Time:', 'ta-vchat')}
+									value={mondayEndTime}
+									onChange={(value) =>
+										setAttributes({ mondayEndTime: value })
+									}
+									placeholder={__('23:59', 'ta-vchat')}
+								/>
+							</PanelBody>
+							<PanelBody
+								title={__('Tuesday', 'ta-vchat')}
+								initialOpen={false}
+							>
+								<TextControl
+									label={__('Start Time:', 'ta-vchat')}
+									value={tuesdayStartTime}
+									onChange={(value) =>
+										setAttributes({
+											tuesdayStartTime: value,
+										})
+									}
+									placeholder={__('00:01', 'ta-vchat')}
+								/>
+								<TextControl
+									label={__('End Time:', 'ta-vchat')}
+									value={tuesdayEndTime}
+									onChange={(value) =>
+										setAttributes({ tuesdayEndTime: value })
+									}
+									placeholder={__('23:59', 'ta-vchat')}
+								/>
+							</PanelBody>
+							<PanelBody
+								title={__('Wednesday', 'ta-vchat')}
+								initialOpen={false}
+							>
+								<TextControl
+									label={__('Start Time:', 'ta-vchat')}
+									value={wednesdayStartTime}
+									onChange={(value) =>
+										setAttributes({
+											wednesdayStartTime: value,
+										})
+									}
+									placeholder={__('00:01', 'ta-vchat')}
+								/>
+								<TextControl
+									label={__('End Time:', 'ta-vchat')}
+									value={wednesdayEndTime}
+									onChange={(value) =>
+										setAttributes({
+											wednesdayEndTime: value,
+										})
+									}
+									placeholder={__('23:59', 'ta-vchat')}
+								/>
+							</PanelBody>
+							<PanelBody
+								title={__('Thursday', 'ta-vchat')}
+								initialOpen={false}
+							>
+								<TextControl
+									label={__('Start Time:', 'ta-vchat')}
+									value={thursdayStartTime}
+									onChange={(value) =>
+										setAttributes({
+											thursdayStartTime: value,
+										})
+									}
+									placeholder={__('00:01', 'ta-vchat')}
+								/>
+								<TextControl
+									label={__('End Time:', 'ta-vchat')}
+									value={thursdayEndTime}
+									onChange={(value) =>
+										setAttributes({
+											thursdayEndTime: value,
+										})
+									}
+									placeholder={__('23:59', 'ta-vchat')}
+								/>
+							</PanelBody>
+							<PanelBody
+								title={__('Friday', 'ta-vchat')}
+								initialOpen={false}
+							>
+								<TextControl
+									label={__('Start Time:', 'ta-vchat')}
+									value={fridayStartTime}
+									onChange={(value) =>
+										setAttributes({
+											fridayStartTime: value,
+										})
+									}
+									placeholder={__('00:01', 'ta-vchat')}
+								/>
+								<TextControl
+									label={__('End Time:', 'ta-vchat')}
+									value={fridayEndTime}
+									onChange={(value) =>
+										setAttributes({ fridayEndTime: value })
+									}
+									placeholder={__('23:59', 'ta-vchat')}
+								/>
+							</PanelBody>
+							<PanelBody
+								title={__('Saturday', 'ta-vchat')}
+								initialOpen={false}
+							>
+								<TextControl
+									label={__('Start Time:', 'ta-vchat')}
+									value={saturdayStartTime}
+									onChange={(value) =>
+										setAttributes({
+											saturdayStartTime: value,
+										})
+									}
+									placeholder={__('00:01', 'ta-vchat')}
+								/>
+								<TextControl
+									label={__('End Time:', 'ta-vchat')}
+									value={saturdayEndTime}
+									onChange={(value) =>
+										setAttributes({
+											saturdayEndTime: value,
+										})
+									}
+									placeholder={__('23:59', 'ta-vchat')}
+								/>
+							</PanelBody>
+							<PanelBody
+								title={__('Sunday', 'ta-vchat')}
+								initialOpen={false}
+							>
+								<TextControl
+									label={__('Start Time:', 'ta-vchat')}
+									value={sundayStartTime}
+									onChange={(value) =>
+										setAttributes({
+											sundayStartTime: value,
+										})
+									}
+									placeholder={__('00:01', 'ta-vchat')}
+								/>
+								<TextControl
+									label={__('End Time:', 'ta-vchat')}
+									value={sundayEndTime}
+									onChange={(value) =>
+										setAttributes({ sundayEndTime: value })
+									}
+									placeholder={__('23:59', 'ta-vchat')}
+								/>
+							</PanelBody>
 						</PanelBody>
 						<PanelBody
 							title={__('Button Style', 'ta-vchat')}
@@ -2840,7 +3017,9 @@ export default function Edit(props) {
 						<a
 							{...useBlockProps({
 								className: `avatar-active ${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`,
-							})} data-timezone={timeZone}
+							})}
+							data-timezone={timeZone}
+							data-btnavailablety={`{ "monday":"${mondayStartTime}-${mondayEndTime}", "tuesday":"${tuesdayStartTime}-${tuesdayEndTime}", "wednesday":"${wednesdayStartTime}-${wednesdayEndTime}", "thursday":"${thursdayStartTime}-${thursdayEndTime}", "friday":"${fridayStartTime}-${fridayEndTime}", "saturday":"${saturdayStartTime}-${saturdayEndTime}", "sunday":"${sundayStartTime}-${sundayEndTime}" }`}
 						>
 							<img src={imageUrl} alt="agent" />
 							<div className="info-wrapper">

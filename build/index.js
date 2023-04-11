@@ -1836,9 +1836,24 @@ function Edit(props) {
     buttonBackgroundColor,
     numberInput,
     imageUrl,
-    timeZone
+    timeZone,
+    mondayStartTime,
+    mondayEndTime,
+    tuesdayStartTime,
+    tuesdayEndTime,
+    wednesdayStartTime,
+    wednesdayEndTime,
+    thursdayStartTime,
+    thursdayEndTime,
+    fridayStartTime,
+    fridayEndTime,
+    saturdayStartTime,
+    saturdayEndTime,
+    sundayStartTime,
+    sundayEndTime
   } = attributes;
-  console.log(timeZone);
+
+  // Timezone select and filter //
   const [filteredOptions, setFilteredOptions] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(timezones);
   function onInputChange(value) {
     setFilteredOptions(timezones.filter(timezone => timezone.label.toLowerCase().includes(value.toLowerCase())));
@@ -1848,6 +1863,8 @@ function Edit(props) {
       timeZone: value
     });
   }
+
+  // Image upload  //
   const onSelectImage = image => {
     setAttributes({
       imageUrl: image.url
@@ -2175,7 +2192,126 @@ function Edit(props) {
     options: filteredOptions,
     onChange: onFontSizeChange,
     onInputChange: onInputChange
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Monday', 'ta-vchat'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Start Time:', 'ta-vchat'),
+    value: mondayStartTime,
+    onChange: value => setAttributes({
+      mondayStartTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('00:01', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('End Time:', 'ta-vchat'),
+    value: mondayEndTime,
+    onChange: value => setAttributes({
+      mondayEndTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tuesday', 'ta-vchat'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Start Time:', 'ta-vchat'),
+    value: tuesdayStartTime,
+    onChange: value => setAttributes({
+      tuesdayStartTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('00:01', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('End Time:', 'ta-vchat'),
+    value: tuesdayEndTime,
+    onChange: value => setAttributes({
+      tuesdayEndTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wednesday', 'ta-vchat'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Start Time:', 'ta-vchat'),
+    value: wednesdayStartTime,
+    onChange: value => setAttributes({
+      wednesdayStartTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('00:01', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('End Time:', 'ta-vchat'),
+    value: wednesdayEndTime,
+    onChange: value => setAttributes({
+      wednesdayEndTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Thursday', 'ta-vchat'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Start Time:', 'ta-vchat'),
+    value: thursdayStartTime,
+    onChange: value => setAttributes({
+      thursdayStartTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('00:01', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('End Time:', 'ta-vchat'),
+    value: thursdayEndTime,
+    onChange: value => setAttributes({
+      thursdayEndTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Friday', 'ta-vchat'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Start Time:', 'ta-vchat'),
+    value: fridayStartTime,
+    onChange: value => setAttributes({
+      fridayStartTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('00:01', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('End Time:', 'ta-vchat'),
+    value: fridayEndTime,
+    onChange: value => setAttributes({
+      fridayEndTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saturday', 'ta-vchat'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Start Time:', 'ta-vchat'),
+    value: saturdayStartTime,
+    onChange: value => setAttributes({
+      saturdayStartTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('00:01', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('End Time:', 'ta-vchat'),
+    value: saturdayEndTime,
+    onChange: value => setAttributes({
+      saturdayEndTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Sunday', 'ta-vchat'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Start Time:', 'ta-vchat'),
+    value: sundayStartTime,
+    onChange: value => setAttributes({
+      sundayStartTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('00:01', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('End Time:', 'ta-vchat'),
+    value: sundayEndTime,
+    onChange: value => setAttributes({
+      sundayEndTime: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Style', 'ta-vchat'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
@@ -2273,7 +2409,8 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: `avatar-active ${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
   }), {
-    "data-timezone": timeZone
+    "data-timezone": timeZone,
+    "data-btnavailablety": `{ "monday":"${mondayStartTime}-${mondayEndTime}", "tuesday":"${tuesdayStartTime}-${tuesdayEndTime}", "wednesday":"${wednesdayStartTime}-${wednesdayEndTime}", "thursday":"${thursdayStartTime}-${thursdayEndTime}", "friday":"${fridayStartTime}-${fridayEndTime}", "saturday":"${saturdayStartTime}-${saturdayEndTime}", "sunday":"${sundayStartTime}-${sundayEndTime}" }`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     src: imageUrl,
     alt: "agent"
@@ -2393,16 +2530,31 @@ function save(_ref) {
     buttonBackgroundColor,
     iconTarget,
     imageUrl,
-    timeZone
+    timeZone,
+    mondayStartTime,
+    mondayEndTime,
+    tuesdayStartTime,
+    tuesdayEndTime,
+    wednesdayStartTime,
+    wednesdayEndTime,
+    thursdayStartTime,
+    thursdayEndTime,
+    fridayStartTime,
+    fridayEndTime,
+    saturdayStartTime,
+    saturdayEndTime,
+    sundayStartTime,
+    sundayEndTime
   } = attributes;
+  const viberLink = `https://viber://chat?number=${numberInput}`;
   const textClasses = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`text-box-align-${textAlignment}`);
   const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`vcButtons vChat-button-4 vc-btn-bg`);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, buttonType === "basic-button" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, buttonType === 'basic-button' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `button-wrapper ${textClasses}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
     className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
   }), {
-    href: `viber://chat?number=${numberInput}`,
+    href: `https://wa.me/${numberInput}`,
     rel: "noopener noreferrer",
     target: buttonLinkTarget ? '_blank' : '_self'
   }), iconTarget && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
@@ -2413,12 +2565,13 @@ function save(_ref) {
   }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `button-wrapper ${textClasses}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-    className: `avatar-active ${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
+    className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
   }), {
-    "data-timezone": timeZone,
-    href: `viber://chat?number=${numberInput}`,
+    href: `https://wa.me/${numberInput}`,
     rel: "noopener noreferrer",
-    target: buttonLinkTarget ? '_blank' : '_self'
+    target: buttonLinkTarget ? '_blank' : '_self',
+    "data-timezone": timeZone,
+    "data-btnavailablety": `{ "monday":"${mondayStartTime}-${mondayEndTime}", "tuesday":"${tuesdayStartTime}-${tuesdayEndTime}", "wednesday":"${wednesdayStartTime}-${wednesdayEndTime}", "thursday":"${thursdayStartTime}-${thursdayEndTime}", "friday":"${fridayStartTime}-${fridayEndTime}", "saturday":"${saturdayStartTime}-${saturdayEndTime}", "sunday":"${sundayStartTime}-${sundayEndTime}" }`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     src: imageUrl,
     alt: "agent"
@@ -2638,7 +2791,7 @@ function _extends() {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/vchat-block","version":"0.1.0","title":"vChat-block","category":"widgets","icon":"share-alt","description":"Allow your users to send you direct Viber messages by clicking floating chat button and buttons with vChat block.","textdomain":"ta-vchat","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["viber","vChat","chat","viberChat"],"supports":{"html":false,"color":{"background":true,"text":true,"gradients":true,"hover":true},"spacing":{},"typography":{}},"example":{"attributes":{"text":"This is some text!","gradient":"red-to-blue","links":true}},"attributes":{"text":{"type":"string","default":"How can I help you?"},"info":{"type":"string","default":"Robert / Sales Support"},"title":{"type":"string","default":"How can I help you?"},"online":{"type":"string","default":"I am online"},"offline":{"type":"string","default":"I am offline"},"buttonType":{"type":"string","default":"basic-button"},"buttonSize":{"type":"string","default":"size-medium"},"borderRadius":{"type":"string","default":"border-rounded"},"visibility":{"type":"string","default":""},"border":{"type":"string","default":"border-none"},"textAlignment":{"type":"string","default":"left"},"iconTarget":{"type":"boolean","default":false},"buttonLinkTarget":{"type":"boolean","default":false},"buttonTextColor":{"type":"string"},"buttonBackgroundColor":{"type":"string","default":"red"},"numberInput":{"type":"string","default":""},"imageUrl":{"type":"string","default":""},"timeZone":{"type":"string","default":""}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/vchat-block","version":"0.1.0","title":"vChat-block","category":"widgets","icon":"share-alt","description":"Allow your users to send you direct Viber messages by clicking floating chat button and buttons with vChat block.","textdomain":"ta-vchat","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["viber","vChat","chat","viberChat"],"supports":{"html":false,"color":{"background":true,"text":true,"gradients":true,"hover":true},"spacing":{},"typography":{}},"example":{"attributes":{"text":"This is some text!","gradient":"red-to-blue","links":true}},"attributes":{"text":{"type":"string","default":"How can I help you?"},"info":{"type":"string","default":"Robert / Sales Support"},"title":{"type":"string","default":"How can I help you?"},"online":{"type":"string","default":"I am online"},"offline":{"type":"string","default":"I am offline"},"buttonType":{"type":"string","default":"basic-button"},"buttonSize":{"type":"string","default":"size-medium"},"borderRadius":{"type":"string","default":"border-rounded"},"visibility":{"type":"string","default":""},"border":{"type":"string","default":"border-none"},"textAlignment":{"type":"string","default":"left"},"iconTarget":{"type":"boolean","default":false},"buttonLinkTarget":{"type":"boolean","default":false},"buttonTextColor":{"type":"string"},"buttonBackgroundColor":{"type":"string","default":"red"},"numberInput":{"type":"string","default":""},"imageUrl":{"type":"string","default":""},"timeZone":{"type":"string","default":""},"mondayStartTime":{"type":"string","default":"00:01"},"mondayEndTime":{"type":"string","default":"23:59"},"tuesdayStartTime":{"type":"string","default":"00:01"},"tuesdayEndTime":{"type":"string","default":"23:59"},"wednesdayStartTime":{"type":"string","default":"00:01"},"wednesdayEndTime":{"type":"string","default":"23:59"},"thursdayStartTime":{"type":"string","default":"00:01"},"thursdayEndTime":{"type":"string","default":"23:59"},"fridayStartTime":{"type":"string","default":"00:01"},"fridayEndTime":{"type":"string","default":"23:59"},"saturdayStartTime":{"type":"string","default":"00:01"},"saturdayEndTime":{"type":"string","default":"23:59"},"sundayStartTime":{"type":"string","default":"00:01"},"sundayEndTime":{"type":"string","default":"23:59"}}}');
 
 /***/ })
 

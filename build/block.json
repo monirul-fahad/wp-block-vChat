@@ -106,6 +106,62 @@
     "timeZone": {
       "type": "string",
       "default": ""
+    },
+    "mondayStartTime": {
+      "type": "string",
+      "default": "00:01"
+    },
+    "mondayEndTime": {
+      "type": "string",
+      "default": "23:59"
+    },
+    "tuesdayStartTime": {
+      "type": "string",
+      "default": "00:01"
+    },
+    "tuesdayEndTime": {
+      "type": "string",
+      "default": "23:59"
+    },
+    "wednesdayStartTime": {
+      "type": "string",
+      "default": "00:01"
+    },
+    "wednesdayEndTime": {
+      "type": "string",
+      "default": "23:59"
+    },
+    "thursdayStartTime": {
+      "type": "string",
+      "default": "00:01"
+    },
+    "thursdayEndTime": {
+      "type": "string",
+      "default": "23:59"
+    },
+    "fridayStartTime": {
+      "type": "string",
+      "default": "00:01"
+    },
+    "fridayEndTime": {
+      "type": "string",
+      "default": "23:59"
+    },
+    "saturdayStartTime": {
+      "type": "string",
+      "default": "00:01"
+    },
+    "saturdayEndTime": {
+      "type": "string",
+      "default": "23:59"
+    },
+    "sundayStartTime": {
+      "type": "string",
+      "default": "00:01"
+    },
+    "sundayEndTime": {
+      "type": "string",
+      "default": "23:59"
     }
   }
 }
