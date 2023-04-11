@@ -46,11 +46,11 @@
 		},
 		"online": {
 			"type": "string",
-			"default": "I am online"
+			"default": "I'm available"
 		},
 		"offline": {
 			"type": "string",
-			"default": "I am offline"
+			"default": "I'm offline"
 		},
 		"buttonType": {
 			"type": "string",
@@ -68,10 +68,6 @@
 			"type": "string",
 			"default": ""
 		},
-		"border": {
-			"type": "string",
-			"default": "border-none"
-		},
 		"textAlignment": {
 			"type": "string",
 			"default": "left"
@@ -83,13 +79,6 @@
 		"buttonLinkTarget": {
 			"type": "boolean",
 			"default": false
-		},
-		"buttonTextColor": {
-			"type": "string"
-		},
-		"buttonBackgroundColor": {
-			"type": "string",
-			"default": "red"
 		},
 		"numberInput": {
 			"type": "string",

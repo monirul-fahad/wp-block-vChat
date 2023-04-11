@@ -1830,10 +1830,7 @@ function Edit(props) {
     textAlignment,
     iconTarget,
     visibility,
-    border,
     buttonLinkTarget,
-    buttonTextColor,
-    buttonBackgroundColor,
     numberInput,
     imageUrl,
     timeZone,
@@ -1895,6 +1892,11 @@ function Edit(props) {
       online: newOnline
     });
   };
+  const advancedBtnOfflineBadge = newOnline => {
+    setAttributes({
+      offline: newOnline
+    });
+  };
   const onIconTarget = iconTargets => {
     setAttributes({
       iconTarget: iconTargets
@@ -1905,18 +1907,8 @@ function Edit(props) {
       buttonLinkTarget: newLinkTarget
     });
   };
-  const onChangeButtonBackgroundColor = newBgColor => {
-    setAttributes({
-      buttonBackgroundColor: newBgColor
-    });
-  };
-  const onChangeButtonTextColor = newTextColor => {
-    setAttributes({
-      buttonTextColor: newTextColor
-    });
-  };
   const textClasses = classnames__WEBPACK_IMPORTED_MODULE_5___default()(`text-box-align-${textAlignment}`);
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_5___default()(`vcButtons vChat-button-4 vc-btn-bg`);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_5___default()(`vChat-button-4 vc-btn-bg`);
   const buttonSizeOptions = [{
     value: 'size-small',
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Small', 'ta-vchat')
@@ -1957,37 +1949,6 @@ function Edit(props) {
     value: 'vc-mobile-only',
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Mobile only', 'ta-vchat')
   }];
-  const borderWidth = [{
-    value: '',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Default', 'ta-vchat')
-  }, {
-    value: 'border-none',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('None', 'ta-vchat')
-  }, {
-    value: 'border-solid',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Solid', 'ta-vchat')
-  }, {
-    value: 'border-dashed',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Dashed', 'ta-vchat')
-  }, {
-    value: 'border-dotted',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Dotted', 'ta-vchat')
-  }, {
-    value: 'border-double',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Double', 'ta-vchat')
-  }, {
-    value: 'border-inset',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Inset', 'ta-vchat')
-  }, {
-    value: 'border-outset',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Outset', 'ta-vchat')
-  }, {
-    value: 'border-groove',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Groove', 'ta-vchat')
-  }, {
-    value: 'border-ridge',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ridge', 'ta-vchat')
-  }];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Type', 'ta-vchat'),
     value: buttonType,
@@ -2005,36 +1966,36 @@ function Edit(props) {
       setAttributes({
         buttonType: newButton
       });
-    }
+    },
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose the type of button', 'ta-vchat')
   }))), buttonType === 'basic-button' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Text', 'ta-vchat'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ganerel settings', 'ta-vchat'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Text', 'ta-vchat'),
-    value: text,
-    onChange: value => setAttributes({
-      text: value
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Viber Number', 'ta-vchat'),
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Viber Number With Country Code', 'ta-vchat'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Number', 'ta-vchat'),
     value: numberInput,
     onChange: value => setAttributes({
       numberInput: value
-    })
+    }),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add your viber number including country code. eg: +8801235445452', 'ta-vchat')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open link in new window', 'ta-vchat'),
     checked: buttonLinkTarget,
     onChange: onButtonLinkTarget
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button label', 'ta-vchat'),
+    value: text,
+    onChange: value => setAttributes({
+      text: value
+    }),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Custom Button Label', 'ta-vchat')
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Style', 'ta-vchat'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Appearance settings', 'ta-vchat'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Size', 'ta-vchat'),
-    value: buttonSize,
-    options: buttonSizeOptions.map(_ref2 => {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Visibility on', 'ta-vchat'),
+    value: visibility,
+    options: visibilityOn.map(_ref2 => {
       let {
         value,
         label
@@ -2046,13 +2007,13 @@ function Edit(props) {
     }),
     onChange: newSize => {
       setAttributes({
-        buttonSize: newSize
+        visibility: newSize
       });
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border Radius', 'ta-vchat'),
-    value: borderRadius,
-    options: borderRadiusOptions.map(_ref3 => {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Size', 'ta-vchat'),
+    value: buttonSize,
+    options: buttonSizeOptions.map(_ref3 => {
       let {
         value,
         label
@@ -2064,13 +2025,17 @@ function Edit(props) {
     }),
     onChange: newSize => {
       setAttributes({
-        borderRadius: newSize
+        buttonSize: newSize
       });
     }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Icon', 'ta-vchat'),
+    checked: iconTarget,
+    onChange: onIconTarget
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Visibility on', 'ta-vchat'),
-    value: visibility,
-    options: visibilityOn.map(_ref4 => {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border Radius', 'ta-vchat'),
+    value: borderRadius,
+    options: borderRadiusOptions.map(_ref4 => {
       let {
         value,
         label
@@ -2082,41 +2047,20 @@ function Edit(props) {
     }),
     onChange: newSize => {
       setAttributes({
-        visibility: newSize
+        borderRadius: newSize
       });
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'ta-vchat'),
-    value: border,
-    options: borderWidth.map(_ref5 => {
-      let {
-        value,
-        label
-      } = _ref5;
-      return {
-        value,
-        label
-      };
-    }),
-    onChange: newSize => {
-      setAttributes({
-        border: newSize
-      });
-    }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon', 'ta-vchat'),
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Icon', 'ta-vchat'),
-    checked: iconTarget,
-    onChange: onIconTarget
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Allignment', 'ta-vchat'),
+    value: textAlignment,
+    onChange: onChangeAlignment
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
     value: textAlignment,
     onChange: onChangeAlignment
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `button-wrapper ${textClasses}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
-    className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
+    className: `${classes} ${buttonSize} ${borderRadius} ${visibility}`
   }), iconTarget && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: "dashicons dashicons-share-alt"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
@@ -2126,16 +2070,28 @@ function Edit(props) {
     tagName: "span",
     allowedFormats: []
   })))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Info', 'ta-vchat'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ganeral Setting', 'ta-vchat'),
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Agent Image', 'ta-vchat'),
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Number', 'ta-vchat'),
+    value: numberInput,
+    onChange: value => setAttributes({
+      numberInput: value
+    }),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add your viber number including country code. eg: +8801235445452', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open link in new window', 'ta-vchat'),
+    checked: buttonLinkTarget,
+    onChange: onButtonLinkTarget,
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Toggle this if you want the link to open in new tab', 'ta-vchat')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Agent photo', 'ta-vchat'),
     onSelect: onSelectImage,
     allowedTypes: ['image'],
-    render: _ref6 => {
+    render: _ref5 => {
       let {
         open
-      } = _ref6;
+      } = _ref5;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
         onClick: open,
         style: {
@@ -2149,49 +2105,41 @@ function Edit(props) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Agent Info', 'ta-vchat'),
     value: info,
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add agent name and designation to show in button', 'ta-vchat'),
     onChange: value => setAttributes({
       info: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Title', 'ta-vchat'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button label', 'ta-vchat'),
     value: title,
     onChange: value => setAttributes({
       title: value
-    })
+    }),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Custom Button Label', 'ta-vchat')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Available Text', 'ta-vchat'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Online badge text', 'ta-vchat'),
     value: online,
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Custom badge text when user in online', 'ta-vchat'),
     onChange: value => setAttributes({
       online: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unavailable Text', 'ta-vchat'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Offline badge text', 'ta-vchat'),
     value: offline,
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Custom badge text when user in offline', 'ta-vchat'),
     onChange: value => setAttributes({
       offline: value
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Viber Number', 'ta-vchat'),
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Number Input', 'ta-vchat'),
-    value: numberInput,
-    onChange: value => setAttributes({
-      numberInput: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open link in new window', 'ta-vchat'),
-    checked: buttonLinkTarget,
-    onChange: onButtonLinkTarget
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Available Time', 'ta-vchat'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Chat Settings', 'ta-vchat'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ComboboxControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Time Zone', 'ta-vchat'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Timezone', 'ta-vchat'),
     value: timeZone,
     options: filteredOptions,
     onChange: onFontSizeChange,
-    onInputChange: onInputChange
+    onInputChange: onInputChange,
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('When using the date and time from the user browser you can transform it to your current timezone (in case your user is in a different timezone)', 'ta-vchat')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Monday', 'ta-vchat'),
     initialOpen: false
@@ -2312,10 +2260,28 @@ function Edit(props) {
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('23:59', 'ta-vchat')
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Style', 'ta-vchat'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Appearence settings', 'ta-vchat'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Size', 'ta-vchat'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Visibility on', 'ta-vchat'),
+    value: visibility,
+    options: visibilityOn.map(_ref6 => {
+      let {
+        value,
+        label
+      } = _ref6;
+      return {
+        value,
+        label
+      };
+    }),
+    onChange: newSize => {
+      setAttributes({
+        visibility: newSize
+      });
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Size', 'ta-vchat'),
     value: buttonSize,
     options: buttonSizeOptions.map(_ref7 => {
       let {
@@ -2350,64 +2316,17 @@ function Edit(props) {
         borderRadius: newSize
       });
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Visibility on', 'ta-vchat'),
-    value: visibility,
-    options: visibilityOn.map(_ref9 => {
-      let {
-        value,
-        label
-      } = _ref9;
-      return {
-        value,
-        label
-      };
-    }),
-    onChange: newSize => {
-      setAttributes({
-        visibility: newSize
-      });
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'ta-vchat'),
-    value: border,
-    options: borderWidth.map(_ref10 => {
-      let {
-        value,
-        label
-      } = _ref10;
-      return {
-        value,
-        label
-      };
-    }),
-    onChange: newSize => {
-      setAttributes({
-        border: newSize
-      });
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
-    initialOpen: true,
-    disableCustomColors: false,
-    colorSettings: [{
-      value: buttonBackgroundColor,
-      onChange: onChangeButtonBackgroundColor,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Background Color', 'call-to-action')
-    }, {
-      value: buttonTextColor,
-      onChange: onChangeButtonTextColor,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Button Text Color', 'call-to-action')
-    }]
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ContrastChecker, {
-    textColor: buttonTextColor,
-    backgroundColor: buttonBackgroundColor
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Allignment', 'ta-vchat'),
+    value: textAlignment,
+    onChange: onChangeAlignment
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
     value: textAlignment,
     onChange: onChangeAlignment
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `button-wrapper ${textClasses}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
-    className: `avatar-active ${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
+    className: `avatar-active vcButtons ${classes} ${buttonSize} ${borderRadius} ${visibility}`
   }), {
     "data-timezone": timeZone,
     "data-btnavailablety": `{ "monday":"${mondayStartTime}-${mondayEndTime}", "tuesday":"${tuesdayStartTime}-${tuesdayEndTime}", "wednesday":"${wednesdayStartTime}-${wednesdayEndTime}", "thursday":"${thursdayStartTime}-${thursdayEndTime}", "friday":"${fridayStartTime}-${fridayEndTime}", "saturday":"${saturdayStartTime}-${saturdayEndTime}", "sunday":"${sundayStartTime}-${sundayEndTime}" }`
@@ -2431,24 +2350,16 @@ function Edit(props) {
     allowedFormats: [],
     className: "title"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
-    style: {
-      backgroundColor: buttonBackgroundColor,
-      color: buttonTextColor
-    },
     onChange: advancedBtnOnlineBadge,
     value: online,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('I am online', 'ta-vchat'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("I'm available", 'ta-vchat'),
     tagName: "p",
     allowedFormats: [],
     className: "online"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
-    style: {
-      backgroundColor: buttonBackgroundColor,
-      color: buttonTextColor
-    },
-    onChange: advancedBtnOnlineBadge,
+    onChange: advancedBtnOfflineBadge,
     value: offline,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('I am offline', 'ta-vchat'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("I'm offline", 'ta-vchat'),
     tagName: "p",
     allowedFormats: [],
     className: "offline"
@@ -2525,9 +2436,6 @@ function save(_ref) {
     buttonLinkTarget,
     numberInput,
     visibility,
-    border,
-    buttonTextColor,
-    buttonBackgroundColor,
     iconTarget,
     imageUrl,
     timeZone,
@@ -2548,11 +2456,11 @@ function save(_ref) {
   } = attributes;
   const viberLink = `https://viber://chat?number=${numberInput}`;
   const textClasses = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`text-box-align-${textAlignment}`);
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`vcButtons vChat-button-4 vc-btn-bg`);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`vChat-button-4 vc-btn-bg`);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, buttonType === 'basic-button' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `button-wrapper ${textClasses}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-    className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
+    className: `${classes} ${buttonSize} ${borderRadius} ${visibility}`
   }), {
     href: `https://wa.me/${numberInput}`,
     rel: "noopener noreferrer",
@@ -2565,7 +2473,7 @@ function save(_ref) {
   }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `button-wrapper ${textClasses}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-    className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`
+    className: `vcButtons ${classes} ${buttonSize} ${borderRadius} ${visibility}`
   }), {
     href: `https://wa.me/${numberInput}`,
     rel: "noopener noreferrer",
@@ -2586,18 +2494,10 @@ function save(_ref) {
     tagName: "p",
     className: "title"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    style: {
-      backgroundColor: buttonBackgroundColor,
-      color: buttonTextColor
-    },
     value: online,
     tagName: "p",
     className: "online"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    style: {
-      backgroundColor: buttonBackgroundColor,
-      color: buttonTextColor
-    },
     value: offline,
     tagName: "p",
     className: "offline"
@@ -2791,7 +2691,7 @@ function _extends() {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/vchat-block","version":"0.1.0","title":"vChat-block","category":"widgets","icon":"share-alt","description":"Allow your users to send you direct Viber messages by clicking floating chat button and buttons with vChat block.","textdomain":"ta-vchat","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["viber","vChat","chat","viberChat"],"supports":{"html":false,"color":{"background":true,"text":true,"gradients":true,"hover":true},"spacing":{},"typography":{}},"example":{"attributes":{"text":"This is some text!","gradient":"red-to-blue","links":true}},"attributes":{"text":{"type":"string","default":"How can I help you?"},"info":{"type":"string","default":"Robert / Sales Support"},"title":{"type":"string","default":"How can I help you?"},"online":{"type":"string","default":"I am online"},"offline":{"type":"string","default":"I am offline"},"buttonType":{"type":"string","default":"basic-button"},"buttonSize":{"type":"string","default":"size-medium"},"borderRadius":{"type":"string","default":"border-rounded"},"visibility":{"type":"string","default":""},"border":{"type":"string","default":"border-none"},"textAlignment":{"type":"string","default":"left"},"iconTarget":{"type":"boolean","default":false},"buttonLinkTarget":{"type":"boolean","default":false},"buttonTextColor":{"type":"string"},"buttonBackgroundColor":{"type":"string","default":"red"},"numberInput":{"type":"string","default":""},"imageUrl":{"type":"string","default":""},"timeZone":{"type":"string","default":""},"mondayStartTime":{"type":"string","default":"00:01"},"mondayEndTime":{"type":"string","default":"23:59"},"tuesdayStartTime":{"type":"string","default":"00:01"},"tuesdayEndTime":{"type":"string","default":"23:59"},"wednesdayStartTime":{"type":"string","default":"00:01"},"wednesdayEndTime":{"type":"string","default":"23:59"},"thursdayStartTime":{"type":"string","default":"00:01"},"thursdayEndTime":{"type":"string","default":"23:59"},"fridayStartTime":{"type":"string","default":"00:01"},"fridayEndTime":{"type":"string","default":"23:59"},"saturdayStartTime":{"type":"string","default":"00:01"},"saturdayEndTime":{"type":"string","default":"23:59"},"sundayStartTime":{"type":"string","default":"00:01"},"sundayEndTime":{"type":"string","default":"23:59"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/vchat-block","version":"0.1.0","title":"vChat-block","category":"widgets","icon":"share-alt","description":"Allow your users to send you direct Viber messages by clicking floating chat button and buttons with vChat block.","textdomain":"ta-vchat","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["viber","vChat","chat","viberChat"],"supports":{"html":false,"color":{"background":true,"text":true,"gradients":true,"hover":true},"spacing":{},"typography":{}},"example":{"attributes":{"text":"This is some text!","gradient":"red-to-blue","links":true}},"attributes":{"text":{"type":"string","default":"How can I help you?"},"info":{"type":"string","default":"Robert / Sales Support"},"title":{"type":"string","default":"How can I help you?"},"online":{"type":"string","default":"I\'m available"},"offline":{"type":"string","default":"I\'m offline"},"buttonType":{"type":"string","default":"basic-button"},"buttonSize":{"type":"string","default":"size-medium"},"borderRadius":{"type":"string","default":"border-rounded"},"visibility":{"type":"string","default":""},"textAlignment":{"type":"string","default":"left"},"iconTarget":{"type":"boolean","default":false},"buttonLinkTarget":{"type":"boolean","default":false},"numberInput":{"type":"string","default":""},"imageUrl":{"type":"string","default":""},"timeZone":{"type":"string","default":""},"mondayStartTime":{"type":"string","default":"00:01"},"mondayEndTime":{"type":"string","default":"23:59"},"tuesdayStartTime":{"type":"string","default":"00:01"},"tuesdayEndTime":{"type":"string","default":"23:59"},"wednesdayStartTime":{"type":"string","default":"00:01"},"wednesdayEndTime":{"type":"string","default":"23:59"},"thursdayStartTime":{"type":"string","default":"00:01"},"thursdayEndTime":{"type":"string","default":"23:59"},"fridayStartTime":{"type":"string","default":"00:01"},"fridayEndTime":{"type":"string","default":"23:59"},"saturdayStartTime":{"type":"string","default":"00:01"},"saturdayEndTime":{"type":"string","default":"23:59"},"sundayStartTime":{"type":"string","default":"00:01"},"sundayEndTime":{"type":"string","default":"23:59"}}}');
 
 /***/ })
 

@@ -5,8 +5,6 @@ import {
 	BlockControls,
 	AlignmentToolbar,
 	InspectorControls,
-	ContrastChecker,
-	PanelColorSettings,
 	MediaUpload,
 } from '@wordpress/block-editor';
 import {
@@ -2407,10 +2405,7 @@ export default function Edit(props) {
 		textAlignment,
 		iconTarget,
 		visibility,
-		border,
 		buttonLinkTarget,
-		buttonTextColor,
-		buttonBackgroundColor,
 		numberInput,
 		imageUrl,
 		timeZone,
@@ -2465,22 +2460,20 @@ export default function Edit(props) {
 	const advancedBtnOnlineBadge = (newOnline) => {
 		setAttributes({ online: newOnline });
 	};
+	const advancedBtnOfflineBadge = (newOnline) => {
+		setAttributes({ offline: newOnline });
+	};
 	const onIconTarget = (iconTargets) => {
 		setAttributes({ iconTarget: iconTargets });
 	};
 	const onButtonLinkTarget = (newLinkTarget) => {
 		setAttributes({ buttonLinkTarget: newLinkTarget });
 	};
-	const onChangeButtonBackgroundColor = (newBgColor) => {
-		setAttributes({ buttonBackgroundColor: newBgColor });
-	};
-	const onChangeButtonTextColor = (newTextColor) => {
-		setAttributes({ buttonTextColor: newTextColor });
-	};
+	
 
 	const textClasses = classnames(`text-box-align-${textAlignment}`);
 
-	const classes = classnames(`vcButtons vChat-button-4 vc-btn-bg`);
+	const classes = classnames(`vChat-button-4 vc-btn-bg`);
 
 	const buttonSizeOptions = [
 		{ value: 'size-small', label: __('Small', 'ta-vchat') },
@@ -2505,19 +2498,6 @@ export default function Edit(props) {
 		},
 		{ value: 'vc-mobile-only', label: __('Mobile only', 'ta-vchat') },
 	];
-	const borderWidth = [
-		{ value: '', label: __('Default', 'ta-vchat') },
-		{ value: 'border-none', label: __('None', 'ta-vchat') },
-		{ value: 'border-solid', label: __('Solid', 'ta-vchat') },
-		{ value: 'border-dashed', label: __('Dashed', 'ta-vchat') },
-		{ value: 'border-dotted', label: __('Dotted', 'ta-vchat') },
-		{ value: 'border-double', label: __('Double', 'ta-vchat') },
-		{ value: 'border-inset', label: __('Inset', 'ta-vchat') },
-		{ value: 'border-outset', label: __('Outset', 'ta-vchat') },
-		{ value: 'border-groove', label: __('Groove', 'ta-vchat') },
-		{ value: 'border-ridge', label: __('Ridge', 'ta-vchat') },
-	];
-
 	return (
 		<>
 			<InspectorControls>
@@ -2532,6 +2512,7 @@ export default function Edit(props) {
 						onChange={(newButton) => {
 							setAttributes({ buttonType: newButton });
 						}}
+						help={__('Choose the type of button', 'ta-vchat')}
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -2539,30 +2520,16 @@ export default function Edit(props) {
 				<>
 					<InspectorControls>
 						<PanelBody
-							title={__('Button Text', 'ta-vchat')}
+							title={__('Ganerel settings', 'ta-vchat')}
 							initialOpen={false}
 						>
 							<TextControl
-								label={__('Button Text', 'ta-vchat')}
-								value={text}
-								onChange={(value) =>
-									setAttributes({ text: value })
-								}
-							/>
-						</PanelBody>
-						<PanelBody
-							title={__('Viber Number', 'ta-vchat')}
-							initialOpen={true}
-						>
-							<TextControl
-								label={__(
-									'Viber Number With Country Code',
-									'ta-vchat'
-								)}
+								label={__('Number', 'ta-vchat')}
 								value={numberInput}
 								onChange={(value) =>
 									setAttributes({ numberInput: value })
 								}
+								help={__('Add your viber number including country code. eg: +8801235445452', 'ta-vchat')}
 							/>
 							<ToggleControl
 								label={__(
@@ -2572,37 +2539,19 @@ export default function Edit(props) {
 								checked={buttonLinkTarget}
 								onChange={onButtonLinkTarget}
 							/>
+							<TextControl
+								label={__('Button label', 'ta-vchat')}
+								value={text}
+								onChange={(value) =>
+									setAttributes({ text: value })
+								}
+								help={__('Add Custom Button Label', 'ta-vchat')}
+							/>
 						</PanelBody>
 						<PanelBody
-							title={__('Button Style', 'ta-vchat')}
+							title={__('Appearance settings', 'ta-vchat')}
 							initialOpen={false}
 						>
-							<SelectControl
-								label={__('Button Size', 'ta-vchat')}
-								value={buttonSize}
-								options={buttonSizeOptions.map(
-									({ value, label }) => ({
-										value,
-										label,
-									})
-								)}
-								onChange={(newSize) => {
-									setAttributes({ buttonSize: newSize });
-								}}
-							/>
-							<SelectControl
-								label={__('Border Radius', 'ta-vchat')}
-								value={borderRadius}
-								options={borderRadiusOptions.map(
-									({ value, label }) => ({
-										value,
-										label,
-									})
-								)}
-								onChange={(newSize) => {
-									setAttributes({ borderRadius: newSize });
-								}}
-							/>
 							<SelectControl
 								label={__('Visibility on', 'ta-vchat')}
 								value={visibility}
@@ -2617,28 +2566,41 @@ export default function Edit(props) {
 								}}
 							/>
 							<SelectControl
-								label={__('Border', 'ta-vchat')}
-								value={border}
-								options={borderWidth.map(
+								label={__('Size', 'ta-vchat')}
+								value={buttonSize}
+								options={buttonSizeOptions.map(
 									({ value, label }) => ({
 										value,
 										label,
 									})
 								)}
 								onChange={(newSize) => {
-									setAttributes({ border: newSize });
+									setAttributes({ buttonSize: newSize });
 								}}
 							/>
-						</PanelBody>
-						<PanelBody
-							title={__('Icon', 'ta-vchat')}
-							initialOpen={false}
-						>
 							<ToggleControl
 								label={__('Add Icon', 'ta-vchat')}
 								checked={iconTarget}
 								onChange={onIconTarget}
 							/>
+							<SelectControl
+								label={__('Border Radius', 'ta-vchat')}
+								value={borderRadius}
+								options={borderRadiusOptions.map(
+									({ value, label }) => ({
+										value,
+										label,
+									})
+								)}
+								onChange={(newSize) => {
+									setAttributes({ borderRadius: newSize });
+								}}
+							/>
+							<AlignmentToolbar
+							label={__('Allignment', 'ta-vchat')}
+							value={textAlignment}
+							onChange={onChangeAlignment}
+						/>
 						</PanelBody>
 					</InspectorControls>
 					<BlockControls>
@@ -2651,7 +2613,7 @@ export default function Edit(props) {
 					<div className={`button-wrapper ${textClasses}`}>
 						<a
 							{...useBlockProps({
-								className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`,
+								className: `${classes} ${buttonSize} ${borderRadius} ${visibility}`,
 							})}
 						>
 							{iconTarget && (
@@ -2674,11 +2636,28 @@ export default function Edit(props) {
 				<>
 					<InspectorControls>
 						<PanelBody
-							title={__('Button Info', 'ta-vchat')}
+							title={__('Ganeral Setting', 'ta-vchat')}
 							initialOpen={false}
 						>
+							<TextControl
+								label={__('Number', 'ta-vchat')}
+								value={numberInput}
+								onChange={(value) =>
+									setAttributes({ numberInput: value })
+								}
+								help={__('Add your viber number including country code. eg: +8801235445452', 'ta-vchat')}
+							/>
+							<ToggleControl
+								label={__(
+									'Open link in new window',
+									'ta-vchat'
+								)}
+								checked={buttonLinkTarget}
+								onChange={onButtonLinkTarget}
+								help={__('Toggle this if you want the link to open in new tab', 'ta-vchat')}
+							/>
 							<MediaUpload
-								label={__('Agent Image', 'ta-vchat')}
+								label={__('Agent photo', 'ta-vchat')}
 								onSelect={onSelectImage}
 								allowedTypes={['image']}
 								render={({ open }) => (
@@ -2697,62 +2676,47 @@ export default function Edit(props) {
 							<TextControl
 								label={__('Agent Info', 'ta-vchat')}
 								value={info}
+								help={__('Add agent name and designation to show in button', 'ta-vchat')}
 								onChange={(value) =>
 									setAttributes({ info: value })
 								}
 							/>
 							<TextControl
-								label={__('Button Title', 'ta-vchat')}
+								label={__('Button label', 'ta-vchat')}
 								value={title}
 								onChange={(value) =>
 									setAttributes({ title: value })
 								}
+								help={__('Add Custom Button Label', 'ta-vchat')}
 							/>
 							<TextControl
-								label={__('Available Text', 'ta-vchat')}
+								label={__('Online badge text', 'ta-vchat')}
 								value={online}
+								help={__('Add Custom badge text when user in online', 'ta-vchat')}
 								onChange={(value) =>
 									setAttributes({ online: value })
 								}
 							/>
 							<TextControl
-								label={__('Unavailable Text', 'ta-vchat')}
+								label={__('Offline badge text', 'ta-vchat')}
 								value={offline}
+								help={__('Add Custom badge text when user in offline', 'ta-vchat')}
 								onChange={(value) =>
 									setAttributes({ offline: value })
 								}
 							/>
 						</PanelBody>
 						<PanelBody
-							title={__('Viber Number', 'ta-vchat')}
-							initialOpen={true}
-						>
-							<TextControl
-								label={__('Number Input', 'ta-vchat')}
-								value={numberInput}
-								onChange={(value) =>
-									setAttributes({ numberInput: value })
-								}
-							/>
-							<ToggleControl
-								label={__(
-									'Open link in new window',
-									'ta-vchat'
-								)}
-								checked={buttonLinkTarget}
-								onChange={onButtonLinkTarget}
-							/>
-						</PanelBody>
-						<PanelBody
-							title={__('Available Time', 'ta-vchat')}
+							title={__('Chat Settings', 'ta-vchat')}
 							initialOpen={false}
 						>
 							<ComboboxControl
-								label={__('Time Zone', 'ta-vchat')}
+								label={__('Timezone', 'ta-vchat')}
 								value={timeZone}
 								options={filteredOptions}
 								onChange={onFontSizeChange}
 								onInputChange={onInputChange}
+								help={__('When using the date and time from the user browser you can transform it to your current timezone (in case your user is in a different timezone)', 'ta-vchat')}
 							/>
 							<PanelBody
 								title={__('Monday', 'ta-vchat')}
@@ -2923,11 +2887,24 @@ export default function Edit(props) {
 							</PanelBody>
 						</PanelBody>
 						<PanelBody
-							title={__('Button Style', 'ta-vchat')}
+							title={__('Appearence settings', 'ta-vchat')}
 							initialOpen={false}
 						>
 							<SelectControl
-								label={__('Button Size', 'ta-vchat')}
+								label={__('Visibility on', 'ta-vchat')}
+								value={visibility}
+								options={visibilityOn.map(
+									({ value, label }) => ({
+										value,
+										label,
+									})
+								)}
+								onChange={(newSize) => {
+									setAttributes({ visibility: newSize });
+								}}
+							/>
+							<SelectControl
+								label={__('Size', 'ta-vchat')}
 								value={buttonSize}
 								options={buttonSizeOptions.map(
 									({ value, label }) => ({
@@ -2952,59 +2929,11 @@ export default function Edit(props) {
 									setAttributes({ borderRadius: newSize });
 								}}
 							/>
-							<SelectControl
-								label={__('Visibility on', 'ta-vchat')}
-								value={visibility}
-								options={visibilityOn.map(
-									({ value, label }) => ({
-										value,
-										label,
-									})
-								)}
-								onChange={(newSize) => {
-									setAttributes({ visibility: newSize });
-								}}
-							/>
-							<SelectControl
-								label={__('Border', 'ta-vchat')}
-								value={border}
-								options={borderWidth.map(
-									({ value, label }) => ({
-										value,
-										label,
-									})
-								)}
-								onChange={(newSize) => {
-									setAttributes({ border: newSize });
-								}}
-							/>
-							<PanelColorSettings
-								initialOpen
-								disableCustomColors={false}
-								colorSettings={[
-									{
-										value: buttonBackgroundColor,
-										onChange: onChangeButtonBackgroundColor,
-										label: __(
-											'Button Background Color',
-											'call-to-action'
-										),
-									},
-									{
-										value: buttonTextColor,
-										onChange: onChangeButtonTextColor,
-										label: __(
-											'Button Text Color',
-											'call-to-action'
-										),
-									},
-								]}
-							>
-								<ContrastChecker
-									textColor={buttonTextColor}
-									backgroundColor={buttonBackgroundColor}
-								/>
-							</PanelColorSettings>
+							<AlignmentToolbar
+							label={__('Allignment', 'ta-vchat')}
+							value={textAlignment}
+							onChange={onChangeAlignment}
+						/>
 						</PanelBody>
 					</InspectorControls>
 					<BlockControls>
@@ -3016,7 +2945,7 @@ export default function Edit(props) {
 					<div className={`button-wrapper ${textClasses}`}>
 						<a
 							{...useBlockProps({
-								className: `avatar-active ${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`,
+								className: `avatar-active vcButtons ${classes} ${buttonSize} ${borderRadius} ${visibility}`,
 							})}
 							data-timezone={timeZone}
 							data-btnavailablety={`{ "monday":"${mondayStartTime}-${mondayEndTime}", "tuesday":"${tuesdayStartTime}-${tuesdayEndTime}", "wednesday":"${wednesdayStartTime}-${wednesdayEndTime}", "thursday":"${thursdayStartTime}-${thursdayEndTime}", "friday":"${fridayStartTime}-${fridayEndTime}", "saturday":"${saturdayStartTime}-${saturdayEndTime}", "sunday":"${sundayStartTime}-${sundayEndTime}" }`}
@@ -3046,25 +2975,17 @@ export default function Edit(props) {
 									className="title"
 								/>
 								<RichText
-									style={{
-										backgroundColor: buttonBackgroundColor,
-										color: buttonTextColor,
-									}}
-									onChange={advancedBtnOnlineBadge}
+								onChange={advancedBtnOnlineBadge}
 									value={online}
-									placeholder={__('I am online', 'ta-vchat')}
+									placeholder={__("I'm available", 'ta-vchat')}
 									tagName="p"
 									allowedFormats={[]}
 									className="online"
 								/>
 								<RichText
-									style={{
-										backgroundColor: buttonBackgroundColor,
-										color: buttonTextColor,
-									}}
-									onChange={advancedBtnOnlineBadge}
+								onChange={advancedBtnOfflineBadge}
 									value={offline}
-									placeholder={__('I am offline', 'ta-vchat')}
+									placeholder={__("I'm offline", 'ta-vchat')}
 									tagName="p"
 									allowedFormats={[]}
 									className="offline"

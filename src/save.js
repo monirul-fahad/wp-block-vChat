@@ -14,9 +14,6 @@ export default function save({ attributes }) {
 		buttonLinkTarget,
 		numberInput,
 		visibility,
-		border,
-		buttonTextColor,
-		buttonBackgroundColor,
 		iconTarget,
 		imageUrl,
 		timeZone,
@@ -37,14 +34,14 @@ export default function save({ attributes }) {
 	} = attributes;
 	const viberLink = `https://viber://chat?number=${numberInput}`;
 	const textClasses = classnames(`text-box-align-${textAlignment}`);
-	const classes = classnames(`vcButtons vChat-button-4 vc-btn-bg`);
+	const classes = classnames(`vChat-button-4 vc-btn-bg`);
 	return (
 		<>
 			{buttonType === 'basic-button' ? (
 				<div className={`button-wrapper ${textClasses}`}>
 					<a
 						{...useBlockProps.save({
-							className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`,
+							className: `${classes} ${buttonSize} ${borderRadius} ${visibility}`,
 						})}
 						href={`https://wa.me/${numberInput}`}
 						rel="noopener noreferrer"
@@ -60,7 +57,7 @@ export default function save({ attributes }) {
 				<div className={`button-wrapper ${textClasses}`}>
 					<a
 						{...useBlockProps.save({
-							className: `${classes} ${buttonSize} ${borderRadius} ${visibility} ${border}`,
+							className: `vcButtons ${classes} ${buttonSize} ${borderRadius} ${visibility}`,
 						})}
 						href={`https://wa.me/${numberInput}`}
 						rel="noopener noreferrer"
@@ -81,19 +78,11 @@ export default function save({ attributes }) {
 								className="title"
 							/>
 							<RichText.Content
-								style={{
-									backgroundColor: buttonBackgroundColor,
-									color: buttonTextColor,
-								}}
 								value={online}
 								tagName="p"
 								className="online"
 							/>
 							<RichText.Content
-								style={{
-									backgroundColor: buttonBackgroundColor,
-									color: buttonTextColor,
-								}}
 								value={offline}
 								tagName="p"
 								className="offline"
